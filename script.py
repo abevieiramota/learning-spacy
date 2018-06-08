@@ -67,14 +67,14 @@ DEP_TAGS = {'acl': 'Clausal modifier of noun',
  'root': 'Root',
  'xcomp': 'Open clausal complement'}
 MAP_0_1 = {0: '--', 1: 'X'}
-COLUMNS = ["Text", "POS", "Dep", "Lemma", "Tag", "Shape", "Alpha", "Stop", "Head", "Left", "Right", "Entity", "EntIOB", "Lemma"]
+COLUMNS = ["Text", "POS", "Dep", "Tag", "Shape", "Alpha", "Stop", "Head", "Left", "Right", "Entity", "EntIOB", "Lemma"]
 
 def doc_to_df(doc):
     
     data = []
     for token in doc:
         
-        data.append((token.text, POS_TAGS[token.pos_], token.dep_, token.lemma_, token.tag_, 
+        data.append((token.text, POS_TAGS[token.pos_], token.dep_, token.tag_, 
                          token.shape_, MAP_0_1[token.is_alpha], MAP_0_1[token.is_stop],
                          token.head.text, token.left_edge.text, token.right_edge.text,
                          token.ent_type_, token.ent_iob_, token.lemma_))
