@@ -1,4 +1,5 @@
 import pandas as pd
+from spacy import displacy
 
 # https://spacy.io/api/annotation#pos-tagging
 POS_TAGS = \
@@ -92,3 +93,18 @@ def match_results(nlp, doc, pattern):
         span = doc[start:end]
 
         print(span.text)
+
+
+def displacy_noun_chunks(doc):
+    
+    data =  {
+        'text': doc.text,
+        'ents': [{
+            'start': nc.start_char,
+            'end': nc.end_char,
+            'label': ''
+        } for nc in doc.noun_chunks],
+        'title': None
+    }
+    
+    displacy.render(data, style='ent', manual=True, jupyter=True)
